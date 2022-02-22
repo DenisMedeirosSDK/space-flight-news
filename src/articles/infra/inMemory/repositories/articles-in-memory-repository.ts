@@ -21,11 +21,13 @@ export class ArticlesInMemoryRepository implements ArticlesRepository {
     return this.articles;
   }
 
-  async create(data: unknown): Promise<void> {
+  async create(data: unknown): Promise<Articles> {
     const articles = new Articles();
 
     Object.assign(articles, data);
 
     this.articles.push(articles);
+
+    return articles;
   }
 }
