@@ -5,6 +5,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
 import helmet from 'helmet';
 import cors from 'cors';
+import { errors as celebrateErrors } from 'celebrate';
 
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.json';
@@ -24,6 +25,7 @@ app.use(cors({ origin: '*' }));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(routes);
 
+app.use(celebrateErrors());
 app.use(
   (err: Error, request: Request, response: Response, next: NextFunction) => {
     if (err instanceof Error) {
