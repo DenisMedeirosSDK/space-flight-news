@@ -1,5 +1,8 @@
 import { Articles } from '../../../entities/Articles';
-import { ArticlesRepository } from '../../../entities/articles-repository';
+import {
+  ArticlesRepository,
+  Pagination,
+} from '../../../entities/articles-repository';
 
 export class ArticlesInMemoryRepository implements ArticlesRepository {
   articles: Articles[] = [];
@@ -17,8 +20,8 @@ export class ArticlesInMemoryRepository implements ArticlesRepository {
     return this.articles.find(article => article._id === _id) as Articles;
   }
 
-  async findAll(): Promise<Articles[]> {
-    return this.articles;
+  async findAll({ limit, page }: Pagination): Promise<Articles[]> {
+    return this.articles.slice((page - 1) * limit, page * limit);
   }
 
   async create(data: unknown): Promise<Articles> {

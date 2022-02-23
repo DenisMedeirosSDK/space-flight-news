@@ -1,5 +1,8 @@
 import { Articles } from 'articles/entities/Articles';
-import { ArticlesRepository } from 'articles/entities/articles-repository';
+import {
+  ArticlesRepository,
+  Pagination,
+} from 'articles/entities/articles-repository';
 import { Document, ObjectId } from 'mongodb';
 import { client as MongoClient } from '../../../../infra/database/mongodb/index';
 
@@ -20,10 +23,12 @@ export class ArticlesMongodbRepository implements ArticlesRepository {
     return article as Articles;
   }
 
-  async findAll(): Promise<Articles[]> {
+  async findAll({ limit, page }: Pagination): Promise<Articles[]> {
     const articles: unknown = await MongoClient.db('coodesh')
       .collection('articles')
       .find()
+      .skip(limit > 0 ? (page - 1) * limit : 0)
+      .limit(limit)
       .toArray();
 
     return articles as Articles[];

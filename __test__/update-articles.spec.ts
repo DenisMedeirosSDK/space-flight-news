@@ -12,7 +12,7 @@ describe('Create Articles', () => {
     updateArticlesUseCase = new UpdateArticlesUseCase(articlesRepository);
     createArticlesUseCase = new CreateArticlesUseCase(articlesRepository);
   });
-  it('should be able to create a new article', async () => {
+  it('should be able to update a article', async () => {
     const data = {
       id: 123456,
       featured: false,
@@ -64,5 +64,10 @@ describe('Create Articles', () => {
     const articles = await updateArticlesUseCase.execute(article._id, newData);
 
     expect(articles).toEqual(articles);
+  });
+  it('should be not to update articles', async () => {
+    expect(updateArticlesUseCase.execute('fake_id', {})).rejects.toBeInstanceOf(
+      Error
+    );
   });
 });
