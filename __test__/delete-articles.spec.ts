@@ -12,7 +12,7 @@ describe('Create Articles', () => {
     deleteArticlesUseCase = new DeleteArticlesUseCase(articlesRepository);
     createArticlesUseCase = new CreateArticlesUseCase(articlesRepository);
   });
-  it('should be able to create a new article', async () => {
+  it('should be able to delete a article', async () => {
     const data = {
       id: 123456,
       featured: false,
@@ -41,5 +41,10 @@ describe('Create Articles', () => {
     const articles = await deleteArticlesUseCase.execute(article._id);
 
     expect(articles).toEqual(articles);
+  });
+  it('should be not able to delete article', async () => {
+    expect(deleteArticlesUseCase.execute('fake_id')).rejects.toBeInstanceOf(
+      Error
+    );
   });
 });

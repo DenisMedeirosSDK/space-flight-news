@@ -12,7 +12,7 @@ describe('Create Articles', () => {
     findArticlesByIdUseCase = new FindArticlesByIdUseCase(articlesRepository);
     createArticlesUseCase = new CreateArticlesUseCase(articlesRepository);
   });
-  it('should be able to create a new article', async () => {
+  it('should be able to list article', async () => {
     const data = {
       id: 123456,
       featured: false,
@@ -41,5 +41,10 @@ describe('Create Articles', () => {
     const articles = await findArticlesByIdUseCase.execute(article._id);
 
     expect(articles).toEqual(articles);
+  });
+  it('should be ot able to list article', async () => {
+    expect(findArticlesByIdUseCase.execute('fake_id')).rejects.toBeInstanceOf(
+      Error
+    );
   });
 });
