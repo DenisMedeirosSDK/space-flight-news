@@ -12,7 +12,7 @@ describe('Create Articles', () => {
     findAllArticlesUseCase = new FindAllArticlesUseCase(articlesRepository);
     createArticlesUseCase = new CreateArticlesUseCase(articlesRepository);
   });
-  it('should be able to create a new article', async () => {
+  it('should be able to list articles', async () => {
     const data = {
       id: 123456,
       featured: false,
@@ -38,8 +38,50 @@ describe('Create Articles', () => {
 
     await createArticlesUseCase.execute(data);
 
-    const articles = await findAllArticlesUseCase.execute();
+    const articles = await findAllArticlesUseCase.execute({
+      page: 1,
+      limit: 1,
+    });
 
     expect(articles).toEqual(articles);
+  });
+
+  it('should be able to list five articles', async () => {
+    const data = {
+      id: 123456,
+      featured: false,
+      title: 'string',
+      url: 'string',
+      imageUrl: 'string',
+      newsSite: 'string',
+      summary: 'string',
+      publishedAt: 'string',
+      launches: [
+        {
+          id: 'string',
+          provider: 'string',
+        },
+      ],
+      events: [
+        {
+          id: 'string',
+          provider: 'string',
+        },
+      ],
+    };
+
+    await createArticlesUseCase.execute(data);
+    await createArticlesUseCase.execute(data);
+    await createArticlesUseCase.execute(data);
+    await createArticlesUseCase.execute(data);
+    await createArticlesUseCase.execute(data);
+    await createArticlesUseCase.execute(data);
+
+    const articles = await findAllArticlesUseCase.execute({
+      page: 1,
+      limit: 5,
+    });
+
+    expect(articles).toHaveLength(5);
   });
 });
