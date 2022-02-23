@@ -10,8 +10,10 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.json';
 
 import './container';
+import { run as mongoConnection } from './database/mongodb';
 import { routes } from './routes';
 
+mongoConnection();
 const app = express();
 
 app.use(express.json());
