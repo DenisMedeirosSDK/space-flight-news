@@ -1,7 +1,7 @@
 import { populateArticles } from './popupale-articles';
-import { populateArticlesToday } from './get-articles-today';
+import { populateArticlesYesterday } from './get-articles-yesterday';
 
 export function startJob() {
   populateArticles;
-  populateArticlesToday;
+  populateArticlesYesterday;
 }
