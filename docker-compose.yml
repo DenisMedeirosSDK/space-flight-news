@@ -31,3 +31,5 @@ services:
       - ME_CONFIG_MONGODB_ADMINPASSWORD=root
     depends_on:
       - db
+  redis:
+    image: redis:latest

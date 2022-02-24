@@ -39,6 +39,8 @@ $ cd space-flight-news
 $ touch .env
 ```
 
+Crie um projeto no [Sentry](https://sentry.io/welcome/), com o projeto criado pegue o credencial de DSN.
+
 No arquivo `.env` devem ser definidas as variaveis que estão dentro de `.env.example`:
 
 ### Sem Docker
@@ -49,6 +51,8 @@ No arquivo `.env` devem ser definidas as variaveis que estão dentro de `.env.ex
 
 **localhost**: `mongodb://localhost:27017/coodesh`
 
+- `REDIS_HOST`: `localhost` || `127.0.0.1`
+
 ```bash
 $ npm install
 
@@ -58,6 +62,8 @@ $ npm run start:dev
 ### Docker
 
 - `MONGO_URL`: `mongodb://root:root@db/coodesh?authSource=admin`
+
+- `REDIS_HOST`: `redis`
 
 ```bash
 $ docker-compose up -d
