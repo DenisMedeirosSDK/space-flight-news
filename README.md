@@ -35,9 +35,37 @@ $ git clone https://github.com/DenisMedeirosSDK/space-flight-news.git
 
 $ cd space-flight-news
 
+$ touch .env
+```
+
+### Sem Docker
+
+No arquivo `.env` devem ser definidas as seguintes variaveis:
+
+- `MONGO_URL`:
+
+**atlas**: `mongodb+srv://<username>:<password>@cluster0.hr2tt.mongodb.net/coodesh`
+
+**localhost**: `mongodb://localhost:27017/coodesh`
+
+- `PORT`: `3000`
+
+```bash
 $ npm install
 
 $ npm run start:dev
+```
+
+### Docker
+
+No arquivo `.env` devem ser definidas as seguintes variaveis:
+
+- `MONGO_URL`: `mongodb://root:root@db/coodesh?authSource=admin`
+
+- `PORT`: `3000`
+
+```bash
+$ docker-compose up -d
 ```
 
 ### Endpoint da documentação
