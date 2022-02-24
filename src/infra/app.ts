@@ -16,9 +16,12 @@ import './container';
 import { run as mongoConnection } from './database/mongodb';
 import { routes } from './routes';
 import { startJob } from '../articles/job';
+import { rateLimiter } from './middlewares/rateLimiter';
 
 mongoConnection();
 const app = express();
+
+app.use(rateLimiter);
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN as string,
