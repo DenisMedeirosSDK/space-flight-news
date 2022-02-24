@@ -23,7 +23,7 @@ async function execute() {
 
     articles = response.data;
 
-    const todayDate = format(new Date(), 'yyyy-MM-dd');
+    const todayDate = format(subDays(new Date(), 1), 'yyyy-MM-dd');
 
     articles.map((article: any) => {
       const parsePublishDate = format(
@@ -37,12 +37,12 @@ async function execute() {
       }
     });
 
-    client.db('coodesh').collection('articles').insertMany(newsArticles);
+    await client.db('coodesh').collection('articles').insertMany(newsArticles);
   } catch (error) {
     console.log(error);
   }
 }
 
-export const populateArticlesToday = scheduleJob('0 9 * * *', () => {
+export const populateArticlesYesterday = scheduleJob('0 */9 * * *', () => {
   execute();
 });
