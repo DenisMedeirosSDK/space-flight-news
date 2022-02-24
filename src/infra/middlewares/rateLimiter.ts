@@ -1,23 +1,12 @@
 import { NextFunction, Response, Request } from 'express';
 import { RateLimiterRedis } from 'rate-limiter-flexible';
-import Redis from 'ioredis';
+import { redisClient } from '../database/redis';
 
 export async function rateLimiter(
   request: Request,
   response: Response,
   next: NextFunction
 ) {
-  const redisClient = new Redis({
-    port: Number(process.env.REDIS_PORT),
-    host: String(process.env.REDIS_HOST),
-    db: Number(process.env.REDIS_DB),
-    family: 4,
-  });
-
-  redisClient.on('error', error => {
-    console.log(error);
-  });
-
   const rateLimiterRedis = new RateLimiterRedis({
     storeClient: redisClient,
     keyPrefix: 'ratelimit',
