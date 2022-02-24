@@ -23,6 +23,7 @@ utilizando melhores praticas de programação.
 - [Helmet](https://www.npmjs.com/package/helmet)
 - [Cors](https://www.npmjs.com/package/cors)
 - [date-fns](https://www.npmjs.com/package/date-fns)
+- [Sentry](https://sentry.io/welcome/)
 
 ## 🚦 Cobertura de teste unitarios
 
@@ -38,17 +39,15 @@ $ cd space-flight-news
 $ touch .env
 ```
 
-### Sem Docker
+No arquivo `.env` devem ser definidas as variaveis que estão dentro de `.env.example`:
 
-No arquivo `.env` devem ser definidas as seguintes variaveis:
+### Sem Docker
 
 - `MONGO_URL`:
 
-**atlas**: `mongodb+srv://<username>:<password>@cluster0.hr2tt.mongodb.net/coodesh`
+**atlas**: `mongodb+srv://<username>:<password>@<host>coodesh`
 
 **localhost**: `mongodb://localhost:27017/coodesh`
-
-- `PORT`: `3000`
 
 ```bash
 $ npm install
@@ -58,11 +57,7 @@ $ npm run start:dev
 
 ### Docker
 
-No arquivo `.env` devem ser definidas as seguintes variaveis:
-
 - `MONGO_URL`: `mongodb://root:root@db/coodesh?authSource=admin`
-
-- `PORT`: `3000`
 
 ```bash
 $ docker-compose up -d
