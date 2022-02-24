@@ -86,6 +86,8 @@ $ npm run start:dev
 $ docker-compose up -d
 ```
 
+Para ver os dados do MongoDB acesse: [http://localhost:8081/](http://localhost:8081/)
+
 ### Endpoint da documentação
 
-[http://localhost:3333/api-docs](http://localhost:3333/api-docs)
+[http://localhost:3000/api-docs](http://localhost:3000/api-docs)

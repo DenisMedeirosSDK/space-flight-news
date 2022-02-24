@@ -157,7 +157,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "number"
           },
           "title": {
             "type": "string"
