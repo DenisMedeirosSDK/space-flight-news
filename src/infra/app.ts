@@ -39,6 +39,9 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
+app.use(Sentry.Handlers.requestHandler());
+app.use(Sentry.Handlers.tracingHandler());
+
 app.use(express.json());
 
 app.use(helmet());
@@ -63,8 +66,6 @@ app.use(
     });
   }
 );
-
-app.use(Sentry.Handlers.errorHandler());
 
 app.use(
   Sentry.Handlers.errorHandler({
