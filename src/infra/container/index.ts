@@ -1,8 +1,8 @@
 import { container } from 'tsyringe';
 import { ArticlesRepository } from '../../articles/entities/articles-repository';
-import { ArticlesInMemoryRepository } from '../../articles/infra/inMemory/repositories/articles-in-memory-repository';
+import { ArticlesMongodbRepository } from '../../articles/infra/mongodb/repositories/articles-mongodb-repository';
 
 container.registerSingleton<ArticlesRepository>(
   'ArticlesRepository',
-  ArticlesInMemoryRepository
+  ArticlesMongodbRepository
 );

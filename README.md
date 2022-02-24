@@ -3,7 +3,10 @@
 ## 📝 Sobre
 
 Esse projeto tem como objetivo o construir uma API (CRUD), baseada na API da
-[Space Flight News](https://api.spaceflightnewsapi.net/v3/documentation)
+[Space Flight News](https://api.spaceflightnewsapi.net/v3/documentation),
+utilizando melhores praticas de programação.
+
+> This is a challenge by [Coodesh](https://coodesh.com/)
 
 ## 🛠 Tech
 
@@ -12,17 +15,57 @@ Esse projeto tem como objetivo o construir uma API (CRUD), baseada na API da
 - [Express](http://expressjs.com/)
 - [Jest](https://jestjs.io/pt-BR/)
 - [Swagger](https://swagger.io/)
+- [MongoDB](https://www.mongodb.com/)
+- [Axios](https://www.npmjs.com/package/axios)
+- [SWC](https://swc.rs/)
+- [Node-schedule](https://www.npmjs.com/package/node-schedule)
+- [Celebrate](https://www.npmjs.com/package/celebrate)
+- [Helmet](https://www.npmjs.com/package/helmet)
+- [Cors](https://www.npmjs.com/package/cors)
+- [date-fns](https://www.npmjs.com/package/date-fns)
+
+## 🚦 Cobertura de teste unitarios
+
+![coverage jest](./docs/coverage_jest.png)
 
 ## ⚙️ Executando
 
 ```bash
-$ git clone
+$ git clone https://github.com/DenisMedeirosSDK/space-flight-news.git
 
-$ cd <nome-do-repositorio>
+$ cd space-flight-news
 
+$ touch .env
+```
+
+### Sem Docker
+
+No arquivo `.env` devem ser definidas as seguintes variaveis:
+
+- `MONGO_URL`:
+
+**atlas**: `mongodb+srv://<username>:<password>@cluster0.hr2tt.mongodb.net/coodesh`
+
+**localhost**: `mongodb://localhost:27017/coodesh`
+
+- `PORT`: `3000`
+
+```bash
 $ npm install
 
 $ npm run start:dev
+```
+
+### Docker
+
+No arquivo `.env` devem ser definidas as seguintes variaveis:
+
+- `MONGO_URL`: `mongodb://root:root@db/coodesh?authSource=admin`
+
+- `PORT`: `3000`
+
+```bash
+$ docker-compose up -d
 ```
 
 ### Endpoint da documentação
