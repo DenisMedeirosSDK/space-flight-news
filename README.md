@@ -6,6 +6,8 @@ Esse projeto tem como objetivo o construir uma API (CRUD), baseada na API da
 [Space Flight News](https://api.spaceflightnewsapi.net/v3/documentation),
 utilizando melhores praticas de programação.
 
+> Video de apresentação: [https://youtu.be/j9gSlV20ghc](https://youtu.be/j9gSlV20ghc)
+
 > This is a challenge by [Coodesh](https://coodesh.com/)
 
 ## 🛠 Tech
