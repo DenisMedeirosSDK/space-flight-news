@@ -183,7 +183,7 @@
             "type": "string"
           },
           "featured": {
-            "type": "string"
+            "type": "boolean"
           },
           "url": {
             "type": "string"
@@ -203,18 +203,28 @@
           "launches": {
             "type": "array",
             "items": {
-              "id": {
-                "type": "string",
-                "provider": "string"
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                }
               }
             }
           },
           "events": {
             "type": "array",
             "items": {
-              "id": {
-                "type": "string",
-                "provider": "string"
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                }
               }
             }
           }
