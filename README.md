@@ -13,17 +13,34 @@ utilizando melhores praticas de programação.
 - [Node.js](https://nodejs.org/en/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Express](http://expressjs.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [Node-schedule](https://www.npmjs.com/package/node-schedule)
+
+---
+
 - [Jest](https://jestjs.io/pt-BR/)
 - [Swagger](https://swagger.io/)
-- [MongoDB](https://www.mongodb.com/)
-- [Axios](https://www.npmjs.com/package/axios)
-- [SWC](https://swc.rs/)
-- [Node-schedule](https://www.npmjs.com/package/node-schedule)
 - [Celebrate](https://www.npmjs.com/package/celebrate)
+
+---
+
 - [Helmet](https://www.npmjs.com/package/helmet)
 - [Cors](https://www.npmjs.com/package/cors)
-- [date-fns](https://www.npmjs.com/package/date-fns)
 - [Sentry](https://sentry.io/welcome/)
+- [ioRedis](https://www.npmjs.com/package/ioredis)
+- [rate-limiter-flexible](https://www.npmjs.com/package/rate-limiter-flexible)
+
+---
+
+- [Axios](https://www.npmjs.com/package/axios)
+- [date-fns](https://www.npmjs.com/package/date-fns)
+
+---
+
+- [Docker](https://www.docker.com/)
+- [SWC](https://swc.rs/)
+
+---
 
 ## 🚦 Cobertura de teste unitarios
 
@@ -39,7 +56,7 @@ $ cd space-flight-news
 $ touch .env
 ```
 
-Crie um projeto no [Sentry](https://sentry.io/welcome/), com o projeto criado pegue o credencial de DSN.
+Crie um projeto no [Sentry](https://sentry.io/welcome/), com o projeto criado pegue a credencial de DSN.
 
 No arquivo `.env` devem ser definidas as variaveis que estão dentro de `.env.example`:
 
@@ -47,7 +64,7 @@ No arquivo `.env` devem ser definidas as variaveis que estão dentro de `.env.ex
 
 - `MONGO_URL`:
 
-**atlas**: `mongodb+srv://<username>:<password>@<host>coodesh`
+**atlas**: `mongodb+srv://<username>:<password>@<host>/coodesh`
 
 **localhost**: `mongodb://localhost:27017/coodesh`
 
@@ -69,6 +86,8 @@ $ npm run start:dev
 $ docker-compose up -d
 ```
 
+Para ver os dados do MongoDB acesse: [http://localhost:8081/](http://localhost:8081/)
+
 ### Endpoint da documentação
 
-[http://localhost:3333/api-docs](http://localhost:3333/api-docs)
+[http://localhost:3000/api-docs](http://localhost:3000/api-docs)

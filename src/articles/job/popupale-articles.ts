@@ -3,46 +3,56 @@ import { scheduleJob } from 'node-schedule';
 import { client } from '../../infra/database/mongodb';
 
 async function execute() {
-  let limit = 1000;
-  let start = 0;
-  let articles = [];
+  try {
+    let limit = 1000;
+    let start = 0;
+    let articles = [];
 
-  const getCountDatabase = await client
-    .db('coodesh')
-    .collection('articles')
-    .estimatedDocumentCount();
+    const getCountDatabase = await client
+      .db('coodesh')
+      .collection('articles')
+      .estimatedDocumentCount();
 
-  start = getCountDatabase;
+    start = getCountDatabase;
 
-  if (start === 0) {
-    const response = await axios.get(
-      `https://api.spaceflightnewsapi.net/v3/articles`,
-      {
-        params: {
-          _limit: limit,
-          _start: start,
-          _sort: 'id',
-        },
+    if (start === 0) {
+      const response = await axios.get(
+        `https://api.spaceflightnewsapi.net/v3/articles`,
+        {
+          params: {
+            _limit: limit,
+            _start: start,
+            _sort: 'id',
+          },
+        }
+      );
+      articles = response.data;
+
+      if (articles.length != 0) {
+        await client.db('coodesh').collection('articles').insertMany(articles);
       }
-    );
-    articles = response.data;
-    await client.db('coodesh').collection('articles').insertMany(articles);
-  }
+    }
 
-  if (start > 0) {
-    const response = await axios.get(
-      `https://api.spaceflightnewsapi.net/v3/articles`,
-      {
-        params: {
-          _limit: limit,
-          _start: start++,
-          _sort: 'id',
-        },
+    if (start > 0) {
+      const response = await axios.get(
+        `https://api.spaceflightnewsapi.net/v3/articles`,
+        {
+          params: {
+            _limit: limit,
+            _start: start++,
+            _sort: 'id',
+          },
+        }
+      );
+
+      articles = response.data;
+      if (articles.length != 0) {
+        await client.db('coodesh').collection('articles').insertMany(articles);
       }
-    );
-
-    articles = response.data;
-    await client.db('coodesh').collection('articles').insertMany(articles);
+    }
+  } catch (error) {
+    console.log(error);
+    throw new Error('Error execute job');
   }
 }
 
